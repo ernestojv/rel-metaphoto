@@ -1,0 +1,78 @@
+.photoFilter__main{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+}
+
+.photoFilter__container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 1000px;
+    align-self: center;
+
+}
+
+.photoFilter__filters{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    max-width: 1000px;
+    align-self: center;
+    width: 100%;
+}
+
+.photoFilter__buttons{
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    align-self: center;
+    width: 100%;
+}
+
+.photoFilter__button{
+    max-width: 150px;
+    height: 32px;
+    border-radius: 0.75rem;
+    border: none;
+    padding: 16px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    background-color: #1980e6;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.photoFilter__filters__item{
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+}
+
+.photoFilter__filters__item label{
+    color: #0e141b;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.photoFilter__filters__item input{
+    color: #0e141b;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.875rem;
+    border: 1px solid #d0dbe7;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    padding: 15px;
+}
+
+.photoFilter__filters__item input:focus{
+    outline: 0;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FilterParams } from '../interfaces/FilterParams';
-
+import './PhotoFilter.css';
 interface PhotoFilterProps {
   onFilterChange: (filters: FilterParams, limit?: number, offset?: number) => void;
 }
@@ -9,52 +9,70 @@ const PhotoFilter: React.FC<PhotoFilterProps> = ({ onFilterChange }) => {
   const [title, setTitle] = useState('');
   const [albumTitle, setAlbumTitle] = useState('');
   const [userEmail, setUserEmail] = useState('');
-  const [limit, setLimit] = useState(10);
-  const [offset, setOffset] = useState(0);
+  const [limit, setLimit] = useState(18);
 
   const handleFilterChange = () => {
     const filters: FilterParams = {};
     if (title) filters.title = title;
     if (albumTitle) filters['albumTitle'] = albumTitle;
     if (userEmail) filters['userEmail'] = userEmail;
-
-    onFilterChange(filters, limit, offset);
+    if (limit) filters['limit'] = limit;
+    onFilterChange(filters, limit);
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Photo Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Album Title"
-        value={albumTitle}
-        onChange={(e) => setAlbumTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="User Email"
-        value={userEmail}
-        onChange={(e) => setUserEmail(e.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="Limit"
-        value={limit}
-        onChange={(e) => setLimit(parseInt(e.target.value) || 10)}
-      />
-      <input
-        type="number"
-        placeholder="Offset"
-        value={offset}
-        onChange={(e) => setOffset(parseInt(e.target.value) || 0)}
-      />
-      <button onClick={handleFilterChange}>Apply Filters</button>
+    <div className='photoFilter__main'>
+    <div className='photoFilter__container'>
+      <h2>Filters</h2>
+      <div className='photoFilter__filters'>
+        <div className='photoFilter__filters__item'>
+          <label htmlFor="title">Photo Title</label>
+          <input
+            id="title"
+            type="text"
+            placeholder="Photo Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          </div>
+        <div className='photoFilter__filters__item'>
+          <label htmlFor="albumTitle">Album Title</label>
+          <input
+            id="albumTitle"
+            type="text"
+            placeholder="Album Title"
+            value={albumTitle}
+            onChange={(e) => setAlbumTitle(e.target.value)}
+          />
+        </div>
+        <div className='photoFilter__filters__item'>
+          <label htmlFor="userEmail">User Email</label>
+          <input
+          type="text"
+          placeholder="User Email"
+          value={userEmail}
+          onChange={(e) => setUserEmail(e.target.value)}
+        />
+        </div>
+        <div className='photoFilter__filters__item'>
+          <label htmlFor="limit">Limit</label>
+          <input
+          type="number"
+          placeholder="Limit"
+          value={limit}
+          onChange={(e) => setLimit(parseInt(e.target.value))}
+        />
+        </div>
+        
+      </div>
+      
     </div>
+    <div className='photoFilter__buttons'>
+      <button className='photoFilter__button' onClick={handleFilterChange}>Apply Filters</button>
+    </div>
+    
+    </div>
+    
   );
 };
 

@@ -3,14 +3,16 @@ import { usePhotos } from '../hooks/usePhotos';
 import Pagination from './Pagination';
 import PhotoFilter from './PhotoFilter';
 import { FilterParams } from '../interfaces/FilterParams';
+import './PhotoList.css';
 
 const PhotoList: React.FC = () => {
-  const [limit] = useState<number>(10); // Número de fotos por página
+  const [limit, setLimit] = useState<number>(18);
   const [offset, setOffset] = useState<number>(0);
   const { photos, loading, error, fetchPhotos } = usePhotos();
 
   const handleFilterChange = (filters: FilterParams, limit?: number, offset?: number) => {
     fetchPhotos(filters, limit, offset);
+    setLimit(limit ?? 30);
   };
 
   // Fetch initial data
@@ -23,18 +25,18 @@ const PhotoList: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className='photoList__main'>
       <PhotoFilter onFilterChange={handleFilterChange} />
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      <ul>
-          {photos?.map(photo => (
-            <li key={photo.id}>
+      <section className='photoList__container'>
+        {photos?.map(photo => (
+            <div className='photoList__item' key={photo.id}>
               <img src={photo.thumbnailUrl} alt={photo.title} />
               <p>{photo.title}</p>
-            </li>
+            </div>
           ))}
-        </ul>
+      </section>
       <Pagination limit={limit} offset={offset} onPageChange={handlePageChange} />
     </div>
   );
