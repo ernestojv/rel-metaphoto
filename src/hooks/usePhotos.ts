@@ -7,7 +7,7 @@ interface UsePhotosReturn {
   photos: Photo[] | null;
   loading: boolean;
   error: string | null;
-  fetchPhotos: (filters?: FilterParams) => void;
+  fetchPhotos: (filters?: FilterParams, limit?: number, offset?: number) => void;
 }
 
 export const usePhotos = (): UsePhotosReturn => {
@@ -15,11 +15,11 @@ export const usePhotos = (): UsePhotosReturn => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchPhotos = useCallback(async (filters?: FilterParams) => {
+  const fetchPhotos = useCallback(async (filters?: FilterParams, limit?: number, offset?: number) => {
     setLoading(true);
     setError(null);
     try {
-      const fetchedPhotos = await getPhotos(filters);
+      const fetchedPhotos = await getPhotos(filters, limit, offset);
       setPhotos(fetchedPhotos);
     } catch (err: unknown) {
       if (err instanceof Error) {
