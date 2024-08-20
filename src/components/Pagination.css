@@ -1,0 +1,31 @@
+.Pagination__main{
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+}
+
+.Pagination__container{
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+    max-width: 1000px;
+    align-self: center;
+    justify-content: center;
+}
+
+.Pagination__container button{
+    width: fit-content;
+    max-width: 150px;
+    height: 32px;
+    border-radius: 0.75rem;
+    border: none;
+    padding: 16px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    background-color: #1980e6;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
