@@ -3,12 +3,14 @@ import { usePhotos } from '../hooks/usePhotos';
 import Pagination from './Pagination';
 import PhotoFilter from './PhotoFilter';
 import { FilterParams } from '../interfaces/FilterParams';
+import { useNavigate } from 'react-router-dom';
 import './PhotoList.css';
 
 const PhotoList: React.FC = () => {
-  const [limit, setLimit] = useState<number>(18);
+  const [limit, setLimit] = useState<number>(12);
   const [offset, setOffset] = useState<number>(0);
   const { photos, loading, error, fetchPhotos } = usePhotos();
+  const navigate = useNavigate();
 
   const handleFilterChange = (filters: FilterParams, limit?: number, offset?: number) => {
     fetchPhotos(filters, limit, offset);
@@ -24,6 +26,10 @@ const PhotoList: React.FC = () => {
     setOffset(newOffset);
   };
 
+  const handlePhotoClick = (id: number) => {
+    navigate(`/photos/${id}`);
+  };
+
   return (
     <div className='photoList__main'>
       <PhotoFilter onFilterChange={handleFilterChange} />
@@ -31,7 +37,7 @@ const PhotoList: React.FC = () => {
       {error && <p>{error}</p>}
       <section className='photoList__container'>
         {photos?.map(photo => (
-            <div className='photoList__item' key={photo.id}>
+            <div className='photoList__item' key={photo.id} onClick={() => handlePhotoClick(photo.id)}>
               <img src={photo.thumbnailUrl} alt={photo.title} />
               <p>{photo.title}</p>
             </div>

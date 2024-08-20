@@ -9,7 +9,7 @@ const PhotoFilter: React.FC<PhotoFilterProps> = ({ onFilterChange }) => {
   const [title, setTitle] = useState('');
   const [albumTitle, setAlbumTitle] = useState('');
   const [userEmail, setUserEmail] = useState('');
-  const [limit, setLimit] = useState(18);
+  const [limit, setLimit] = useState(12);
 
   const handleFilterChange = () => {
     const filters: FilterParams = {};
