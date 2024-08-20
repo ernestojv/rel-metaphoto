@@ -1,54 +1,52 @@
-<<<<<<< HEAD
 # rel-metaphoto
-=======
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+`rel-metaphoto` is a React application built with Vite and TypeScript. It is designed to display and manage photos with features such as filtering and pagination. This application allows users to view a list of photos, apply filters based on photo title, album title, and user email, and navigate through pages of photos.
 
-Currently, two official plugins are available:
+## Technologies
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React**: A JavaScript library for building user interfaces.
+- **Vite**: A fast build tool and development server for modern web applications.
+- **TypeScript**: A superset of JavaScript that adds static types.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Data Display**: Shows a list of photos with details such as title and album information.
+- **Filtering**: Allows filtering by photo title, album title, and user email.
+- **Pagination**: Supports limit and offset for paginated data retrieval.
+- **Photo Details**: Provides detailed view of each photo when clicked.
 
-- Configure the top-level `parserOptions` property like this:
+## Setup
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Prerequisites
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Node.js
+- npm or yarn
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Installation
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
->>>>>>> dev
+1. Navigate to the project directory:
+   ```bash
+   cd rel-metaphoto
+
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   
+3. Development environment:
+To start the development server, use:
+   ```bash
+    npm run dev
+    # or
+    yarn dev
+
+4. Build:
+To build the project, run:
+   ```bash
+    npm run build
+    # or
+    yarn build
+
+The compiled files will be output to the ./build directory.
